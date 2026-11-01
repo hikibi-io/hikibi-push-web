@@ -1,6 +1,12 @@
 import doRequest from './do-request';
 import TokenProvider from './token-provider';
 import DeviceStateStore from './device-state-store';
+import {
+  promptForNotifications as promptWithClient,
+  resetNotificationPrompt,
+  PromptOutcome,
+} from './prompt/index.js';
+import { LOCALES as PROMPT_LOCALES } from './prompt/messages.js';
 import pkg from '../package.json' with { type: 'json' };
 
 const sdkVersion = pkg.version;
@@ -526,7 +532,13 @@ function isSupportedBrowser() {
   return isSupported;
 }
 
-export { TokenProvider };
+export { TokenProvider, resetNotificationPrompt, PromptOutcome, PROMPT_LOCALES };
+
+// promptForNotifications shows an in-page banner asking the visitor to turn
+// on desktop notifications, and registers the browser when they agree.
+export function promptForNotifications(options) {
+  return promptWithClient({ ...options, Client });
+}
 
 function trimEndpoint(endpoint) {
   if (typeof endpoint !== 'string' || !/^https?:\/\//.test(endpoint)) {
