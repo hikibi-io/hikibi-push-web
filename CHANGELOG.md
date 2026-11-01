@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.3.0 - unreleased
+
+- `promptForNotifications()`: an in-page banner that asks visitors to turn on
+  desktop notifications before the browser's own permission box, then
+  registers the browser and sets interests and the user ID. "Not now"
+  cooldown, seven languages, bar or card layout, light and dark themes.
+- `resetNotificationPrompt()`, `PromptOutcome` and `PROMPT_LOCALES`.
+
 ## 1.2.1 - 2026-10-29
 
 - The package homepage on npm now links to https://hibira.io. No code changes.
